@@ -1,0 +1,22 @@
+{
+  "name": "suncalc",
+  "url": "https://github.com/ypid/suncalc",
+  "license": "BSD",
+  "tags": [
+    "sun",
+    "moon",
+    "astronomy"
+  ],
+  "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
+  "version": "1.7.0",
+  "releasenote": "First release of this port written in Haxe.",
+  "contributors": [
+    "ypid",
+    "mourner"
+  ],
+  "dependencies": {
+    "datetime": "",
+    "version": "",
+    "dox": ""
+  }
+}

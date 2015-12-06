@@ -1,0 +1,25 @@
+#!/bin/bash
+
+INPUT_JSON="$1"
+if [ -z "$INPUT_JSON" ]; then
+    echo "Please provide the metadata.json file path as first argument." 1>&2
+    exit 1
+fi
+
+TARGET="$2"
+
+NAME="$(jq --raw-output '.name' "$INPUT_JSON")"
+SOURCE_URL="$(jq --raw-output '.url' "$INPUT_JSON")"
+
+BUILD_IMG="$(jq --raw-output '"[![Build Status](" + .integration_testing.img + ")](" + .integration_testing.url + ")"' "$INPUT_JSON")"
+
+echo "
+# $NAME
+
+${BUILD_IMG}
+
+This library was automaticly build using [Haxe](http://haxe.org/) to target ${TARGET}.
+
+Refer to $SOURCE_URL for documentation and when you want to contribute.
+
+Note that you should only report issues against this repository when you think the issue only occours in the ${TARGET} port of this library."

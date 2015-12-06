@@ -1,0 +1,43 @@
+{
+    "name": "suncalc",
+    "url" : "https://github.com/ypid/suncalc",
+    "support": {
+        "issues": "https://github.com/ypid/suncalc/issues"
+    },
+    "integration_testing": {
+        "name": "Travis CI",
+        "url": "https://travis-ci.org/ypid/suncalc",
+        "img": "https://travis-ci.org/ypid/suncalc.svg?branch=master"
+    },
+    "license_short": "BSD",
+    "license_full": "BSD-2-Clause",
+    "tags": ["sun", "moon", "astronomy"],
+    "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
+    "version": "1.7.0",
+    "releasenote": "First release of this port written in Haxe.",
+    "authors": [
+        {
+            "name": "Robin Schneider",
+            "nick": "ypid",
+            "email": "ypid@riseup.net",
+            "homepage": "http://ypid.de/",
+            "role": "Maintainer/Rewrite in Haxe",
+            "targets": "all"
+        },
+        {
+            "name": "Vladimir Agafonkin",
+            "nick": "mourner",
+            "email": "agafonkin@gmail.com",
+            "homepage": "http://agafonkin.com/en",
+            "role": "Initial implementation in JavaScript",
+            "targets": [ "js" ]
+        }
+    ],
+    "dependencies": {
+        "haxe": {
+            "datetime": "",
+            "version": "",
+            "dox": ""
+        }
+    }
+}

@@ -1,0 +1,37 @@
+sudo: false
+
+language: haxe
+
+haxe:
+  - '3.2.1'
+  - 'development'
+
+addons:
+  apt:
+    packages:
+      - python3
+      - php5-cli
+
+## This can be done but it has lots of overhead as all base dependencies are installed 8 times.
+## Also, Travis seems not to support to create status images for each target individually.
+# env:
+#     matrix:
+#       - TARGET=node
+#       - TARGET=java
+#       - TARGET=php
+#       - TARGET=python
+#       - TARGET=cpp
+#       - TARGET=neko
+#       - TARGET=swf
+#       - TARGET=as3
+
+install:
+  ## https://github.com/jdonaldson/promhx/blob/master/.travis.yml
+  # - sh -c "if [ '$TARGET' = 'cpp' ];  then haxelib install hxcpp; fi"
+  # - sh -c "if [ '$TARGET' = 'cs' ];   then haxelib install hxcs; fi"
+  # - sh -c "if [ '$TARGET' = 'java' ]; then haxelib install hxjava; fi"
+  # - sh -c "if [ '$TARGET' = 'node' ]; then haxelib install hxnodejs; fi"
+  - make dependencies-get
+
+script:
+  - make all

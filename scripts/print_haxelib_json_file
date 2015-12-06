@@ -1,0 +1,19 @@
+#!/bin/bash
+
+INPUT_JSON="$1"
+if [ -z "$INPUT_JSON" ]; then
+    echo "Please provide the metadata.json file path as first argument." 1>&2
+    exit 1
+fi
+
+jq '{
+    name: .name,
+    url: .url,
+    license: .license_short,
+    tags: .tags,
+    description: .description,
+    version: .version,
+    releasenote: "First release of this port written in Haxe.",
+    contributors: [ .authors[].nick ],
+    dependencies: .dependencies.haxe,
+}' "$INPUT_JSON"

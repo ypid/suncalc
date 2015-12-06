@@ -1,0 +1,5 @@
+# -dce full
+# -dce std
+# -dce no
+# -D js-flatten
+-D shallow-expose
