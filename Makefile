@@ -95,14 +95,14 @@ build/suncalc_java: $(SRC) includes/pre.all
 
 ## php {{{
 .PHONY: php
-php: build/suncalc_php
+php: ports/suncalc-php
 
 build/test_suncalc_php: $(SRC) $(TEST_SRC)
 	haxe $(HFLAGS) $(LIBS) -cp test -main Test -php "$@"
 	php "$@/index.php"
 
-.PHONY: build/suncalc_php
-build/suncalc_php: $(SRC) includes/pre.all
+.PHONY: ports/suncalc-php
+ports/suncalc-php: $(SRC) includes/pre.all
 	haxe $(HFLAGS_BUILD) -php "$@"
 	@echo '<?php' | cat - includes/pre.all > "$@/lib/SunCalc.class.php.tmp"
 	@grep --invert-match --fixed-strings '<?php' "$@/lib/SunCalc.class.php" >> "$@/lib/SunCalc.class.php.tmp"
@@ -110,14 +110,14 @@ build/suncalc_php: $(SRC) includes/pre.all
 	cp CONTRIBUTING.md LICENSE.md "$@"
 
 
-build/suncalc_php/composer.json: metainfo.json scripts/print_composer_json_file
+ports/suncalc-php/composer.json: metainfo.json scripts/print_composer_json_file
 	./scripts/print_composer_json_file "$<" > "$@"
 
-build/suncalc_php/README.md: metainfo.json scripts/print_readme
+ports/suncalc-php/README.md: metainfo.json scripts/print_readme
 	./scripts/print_readme "$<" PHP > "$@"
 
 .PHONY: php-dist
-php-dist: build/suncalc_php build/suncalc_php/composer.json build/suncalc_php/README.md
+php-dist: ports/suncalc-php ports/suncalc-php/composer.json ports/suncalc-php/README.md
 
 ## }}}
 
