@@ -2,7 +2,8 @@
     "name": "suncalc",
     "url" : "https://github.com/ypid/suncalc",
     "support": {
-        "issues": "https://github.com/ypid/suncalc/issues"
+        "issues": "https://github.com/ypid/suncalc/issues",
+        "docs": "http://ypid.de/suncalc-doc/suncalc/SunCalc.html"
     },
     "integration_testing": {
         "name": "Travis CI",
@@ -15,6 +16,50 @@
     "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
     "version": "1.7.0",
     "releasenote": "First release of this port written in Haxe.",
+    "target_info": {
+        "js": {
+            "target_env_name": "JavaScript/Node.JS",
+            "target_env_url": "https://en.wikipedia.org/wiki/JavaScript",
+            "package_platform": "NPM",
+            "package_url": "https://www.npmjs.org/package/suncalc",
+            "package_badge": "https://badge.fury.io/js/suncalc.svg",
+            "repo_url": "https://github.com/mourner/suncalc"
+        },
+        "java": {
+            "target_env_name": "Java",
+            "target_env_url": "https://en.wikipedia.org/wiki/Java_%28programming_language%29"
+        },
+        "php": {
+            "target_env_name": "PHP",
+            "target_env_url": "https://en.wikipedia.org/wiki/PHP",
+            "package_platform": "PHP",
+            "package_url": "https://packagist.org/packages/ypid/suncalc",
+            "package_badge": "https://badge.fury.io/ph/ypid%2Fsuncalc.svg",
+            "repo_url": "https://github.com/ypid/suncalc-php"
+        },
+        "python": {
+            "target_env_name": "Python",
+            "target_env_url": "https://en.wikipedia.org/wiki/Python_%28programming_language%29"
+        },
+        "cpp": {
+            "target_env_name": "C++",
+            "target_env_url": "https://en.wikipedia.org/wiki/C%2B%2B"
+        },
+        "neko": {
+            "target_env_name": "NekoVM",
+            "target_env_url": "https://en.wikipedia.org/wiki/Neko_%28programming_language%29"
+        }
+    },
+    "target_info_unsupported": {
+        "swf": {
+            "target_env_name": "Adobe Flash",
+            "target_env_url": "https://en.wikipedia.org/wiki/Adobe_Flash"
+        },
+        "as3": {
+            "target_env_name": "ActionScript 3",
+            "target_env_url": "https://en.wikipedia.org/wiki/ActionScript"
+        }
+    },
     "authors": [
         {
             "name": "Robin Schneider",

@@ -1,0 +1,3 @@
+[submodule "build/suncalc_php"]
+	path = build/suncalc_php
+	url = https://github.com/ypid/suncalc-php.git

@@ -14,6 +14,9 @@ MAKE_OPTIONS ?= --no-print-directory
 .PHONY: default
 default: docs
 
+README.md: metainfo.json scripts/print_main_readme
+	./scripts/print_main_readme "$<" > "$@"
+
 .PHONY: dependencies-get
 dependencies-get: haxe-dependencies-get haxe-dependencies-target-get node-dependencies-get
 
@@ -107,14 +110,14 @@ build/suncalc_php: $(SRC) includes/pre.all
 	cp CONTRIBUTING.md LICENSE.md "$@"
 
 
-build/suncalc_php/composer.json: metainfo.json scripts/print_haxelib_json_file
+build/suncalc_php/composer.json: metainfo.json scripts/print_composer_json_file
 	./scripts/print_composer_json_file "$<" > "$@"
 
 build/suncalc_php/README.md: metainfo.json scripts/print_readme
 	./scripts/print_readme "$<" PHP > "$@"
 
-.PHONY: php_dist
-php_dist: build/suncalc_php build/suncalc_php/composer.json build/suncalc_php/README.md
+.PHONY: php-dist
+php-dist: build/suncalc_php build/suncalc_php/composer.json build/suncalc_php/README.md
 
 ## }}}
 
