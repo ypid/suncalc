@@ -1,5 +1,7 @@
 Copyright (C) 2011-2015, Vladimir Agafonkin
+
 Copyright (C) 2015 Robin Schneider <ypid@riseup.net>
+
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:

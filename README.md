@@ -14,7 +14,7 @@ The SunCalc class allows to calculate sun position,
 sunlight phases (times for sunrise, sunset, dusk, etc.),
 moon position and lunar phase for the given location and time.
 
-The library was ported to Haxe by [Robin `ypid` Schneider](https://github.com/ypid).
+The library was ported to Haxe by [Robin `ypid` Schneider](https://github.com/ypid) to allow using it in a [opening hours](https://github.com/opening-hours/opening_hours.js/issues/136) library.
 
 It is based on the [JavaScript implementation](https://github.com/mourner/suncalc)
 created by [Vladimir Agafonkin](http://agafonkin.com/en) ([@mourner](https://github.com/mourner))
@@ -58,4 +58,8 @@ The following limitations seems to be related which should mean that when they a
 * C#: Dependency `datetime` does not compile on target "datetime/3,0,2/src/datetime/DateTime.hx:146: characters 28-110 : haxe.Int64 should be Float"
 
   Priority low.
+
+## License
+
+[BSD-2-Clause](https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29)
 
