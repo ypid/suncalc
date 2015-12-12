@@ -17,6 +17,11 @@ default: docs
 README.md: metainfo.json scripts/print_main_readme
 	./scripts/print_main_readme "$<" > "$@"
 
+## Fix branches of submodules after cloning.
+.PHONY: fix-sub-branches
+fix-sub-branches:
+	cd docs && git checkout gh-pages
+
 .PHONY: dependencies-get
 dependencies-get: haxe-dependencies-get haxe-dependencies-target-get node-dependencies-get
 
@@ -187,9 +192,10 @@ build/suncalc_cs: $(SRC) includes/pre.all
 build/doc.xml: $(SRC)
 	haxe $(HMAIN) $(HFLAGS) $(LIBS) -xml "$@"
 
+.PHONY: docs
 docs: build/doc.xml includes/css_post.css
-	haxelib run dox -i "$<" -o build/dox
-	cat includes/css_post.css >> build/dox/styles.css
+	haxelib run dox -i "$<" -o "$@"
+	cat includes/css_post.css >> "$@/styles.css"
 
 .PHONY: test
 test: docs

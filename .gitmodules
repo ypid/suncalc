@@ -1,3 +1,6 @@
 [submodule "build/suncalc_php"]
 	path = ports/suncalc-php
 	url = https://github.com/ypid/suncalc-php.git
+[submodule "docs"]
+	path = docs
+	url = https://github.com/ypid/suncalc.git

@@ -3,7 +3,7 @@
     "url" : "https://github.com/ypid/suncalc",
     "support": {
         "issues": "https://github.com/ypid/suncalc/issues",
-        "docs": "http://ypid.de/suncalc-doc/suncalc/SunCalc.html"
+        "docs": "https://ypid.github.io/suncalc/SunCalc.html"
     },
     "integration_testing": {
         "name": "Travis CI",
