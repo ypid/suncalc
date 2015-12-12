@@ -42,7 +42,7 @@ haxelib.json: metainfo.json scripts/print_haxelib_json_file
 
 ## Test and build for all supported targets.
 .PHONY: all
-all: dependencies-get test build
+all: dependencies-get test build dist
 
 ## Build for all supported targets.
 .PHONY: build
@@ -217,6 +217,8 @@ test: docs
 	@echo -------- Testing Neko target.
 	@$(MAKE) $(MAKE_OPTIONS) --always-make build/test_suncalc.n
 
+.PHONY: dist
+dist: php-dist
 
 .PHONY: .FORCE
 .FORCE:
