@@ -220,10 +220,13 @@ test: docs
 .PHONY: dist
 dist: php-dist
 
+.PHONY: check-diff
+check-diff:
+	git submodule foreach "find . -type f -not -iregex '\(.*suncalc.*\|\./\.git.*\)' -print0 | xargs -0 git diff --exit-code"
+	git diff --exit-code --ignore-submodules=dirty
+
 .PHONY: push
-push:
-	git submodule foreach git diff --exit-code
-	git diff --exit-code
+push: check-diff
 	git submodule foreach git push
 	git push
 

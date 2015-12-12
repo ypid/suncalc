@@ -1,7 +1,8 @@
 {% extends 'templates/base.md.j2' %}
 
 {% block target_package_badges %}
-{% for target_key, target in meta.target_info.items() %}
+{% for target_key in meta.target_info.keys()|sort %}
+{% set target = meta.target_info[target_key] %}
 {% if target.package_badge is defined and target.package_badge is string %}
 [![{{ target.package_platform }} version]({{ target.package_badge }})]({{ target.package_url }})
 {% endif %}

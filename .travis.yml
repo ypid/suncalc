@@ -39,5 +39,4 @@ script:
   - make all
 
   ## All files should be properly rebuild, nothing should be changed.
-  - git diff --exit-code
-  - git submodule foreach git diff --exit-code
+  - make check-diff

@@ -5,8 +5,8 @@
      instead have a look at: metainfo.json, templates/README.md.j2. -->
 
 [![Build Status](https://travis-ci.org/ypid/suncalc.svg?branch=master)](https://travis-ci.org/ypid/suncalc)
-[![PHP version](https://badge.fury.io/ph/ypid%2Fsuncalc.svg)](https://packagist.org/packages/ypid/suncalc)
 [![NPM version](https://badge.fury.io/js/suncalc.svg)](https://www.npmjs.org/package/suncalc)
+[![PHP version](https://badge.fury.io/ph/ypid%2Fsuncalc.svg)](https://packagist.org/packages/ypid/suncalc)
 
 
 The SunCalc module allows to calculate sun position,
