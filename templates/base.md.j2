@@ -1,9 +1,3 @@
-{% macro target_package_badge(target) %}{# ((( #}
-{% if target.package_badge is defined and target.package_badge is string %}
-[![{{ target.package_platform }} version]({{ target.package_badge }})]({{ target.package_url }})
-{% endif %}
-{%- endmacro %}{# ))) #}
-
 {% block title %}
 # {{ meta.name }}
 {% endblock %}
@@ -16,7 +10,14 @@
 {% block build_status %}
 [![Build Status]({{ meta.integration_testing.img }})]({{ meta.integration_testing.url}})
 {% endblock %}
-{% block target_package_badges %}{% endblock %}
+{% block target_package_badges %}
+{% for target_key in meta.target_info.keys()|sort %}
+{% set target = meta.target_info[target_key] %}
+{% if target.package_badge is defined and target.package_badge is string %}
+[![{{ target.package_platform }} version]({{ target.package_badge }})]({{ target.package_url }})
+{% endif %}
+{% endfor %}
+{% endblock %}
 
 {% block pre_haxe_doc %}{% endblock %}
 

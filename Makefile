@@ -3,8 +3,9 @@ HMAIN        ?= suncalc.SunCalc
 HFLAGS       ?= -cp src
 HFLAGS_BUILD ?= $(HMAIN) $(HFLAGS) -D normal_build $(LIBS)
 
-SRC      ?= $(wildcard src/suncalc/*.hx)
-TEST_SRC ?= $(wildcard test/*)
+SRC          ?= $(wildcard src/suncalc/*.hx)
+TEST_SRC     ?= $(wildcard test/*)
+TEMPLATE_SRC ?= $(wildcard templates/*.j2)
 
 TARGET_SUPPORT_LIBS ?= hxcpp hxjava hxnodejs
 
@@ -14,8 +15,8 @@ MAKE_OPTIONS ?= --no-print-directory
 .PHONY: default
 default: docs
 
-README.md: templates/README.md.j2 metainfo.json build/doc.xml scripts/template
-	scripts/template -i metainfo.json -t "$<" -d build/doc.xml > "$@"
+README.md: metainfo.json $(TEMPLATE_SRC) build/doc.xml scripts/template
+	scripts/template -i "$<" -t templates/README.md.j2 -d build/doc.xml > "$@"
 
 ## Fix branches of submodules after cloning.
 .PHONY: fix-sub-branches
@@ -117,8 +118,8 @@ ports/suncalc-php: $(SRC) includes/pre.all .FORCE
 ports/suncalc-php/composer.json: metainfo.json scripts/print_composer_json_file
 	./scripts/print_composer_json_file "$<" > "$@"
 
-ports/suncalc-php/README.md: templates/ports_README.md.j2 metainfo.json build/doc.xml scripts/template
-	scripts/template -i metainfo.json -t "$<" -d build/doc.xml --key-value target=php > "$@"
+ports/suncalc-php/README.md: metainfo.json $(TEMPLATE_SRC) build/doc.xml scripts/template
+	scripts/template -i "$<" -t templates/ports_README.md.j2 -d build/doc.xml --key-value target=php > "$@"
 
 .PHONY: php-dist
 php-dist: ports/suncalc-php ports/suncalc-php/composer.json ports/suncalc-php/README.md
