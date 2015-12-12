@@ -12,6 +12,7 @@
     },
     "license_short": "BSD",
     "license_full": "BSD-2-Clause",
+    "license_url": "https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29",
     "tags": ["sun", "moon", "astronomy"],
     "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
     "version": "1.7.0",
@@ -23,7 +24,8 @@
             "package_platform": "NPM",
             "package_url": "https://www.npmjs.org/package/suncalc",
             "package_badge": "https://badge.fury.io/js/suncalc.svg",
-            "repo_url": "https://github.com/mourner/suncalc"
+            "repo_url": "https://github.com/mourner/suncalc",
+            "type": "source"
         },
         "java": {
             "target_env_name": "Java",
@@ -35,7 +37,8 @@
             "package_platform": "PHP",
             "package_url": "https://packagist.org/packages/ypid/suncalc",
             "package_badge": "https://badge.fury.io/ph/ypid%2Fsuncalc.svg",
-            "repo_url": "https://github.com/ypid/suncalc-php"
+            "repo_url": "https://github.com/ypid/suncalc-php",
+            "type": "target"
         },
         "python": {
             "target_env_name": "Python",

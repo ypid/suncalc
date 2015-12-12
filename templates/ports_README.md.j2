@@ -1,0 +1,12 @@
+{% extends 'templates/base.md.j2' %}
+{% set package_platform = meta.target_info[kv.target].package_platform %}
+
+{% block post_build_status %}
+{{ target_package_badge(meta.target_info[kv.target]) }}
+{% endblock %}
+
+{% block pre_haxe_doc %}
+This library was automatically build using [Haxe](http://haxe.org/) to target {{ package_platform }}.
+
+Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [this repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ package_platform }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
+{% endblock %}

@@ -14,8 +14,8 @@ MAKE_OPTIONS ?= --no-print-directory
 .PHONY: default
 default: docs
 
-README.md: metainfo.json scripts/print_main_readme
-	./scripts/print_main_readme "$<" > "$@"
+README.md: templates/README.md.j2 metainfo.json build/doc.xml scripts/template
+	scripts/template -i metainfo.json -t "$<" -d build/doc.xml > "$@"
 
 ## Fix branches of submodules after cloning.
 .PHONY: fix-sub-branches
@@ -107,20 +107,18 @@ build/test_suncalc_php: $(SRC) $(TEST_SRC)
 	haxe $(HFLAGS) $(LIBS) -cp test -main Test -php "$@"
 	php "$@/index.php"
 
-.PHONY: ports/suncalc-php
 ports/suncalc-php: $(SRC) includes/pre.all
 	haxe $(HFLAGS_BUILD) -php "$@"
-	@echo '<?php' | cat - includes/pre.all > "$@/lib/SunCalc.class.php.tmp"
-	@grep --invert-match --fixed-strings '<?php' "$@/lib/SunCalc.class.php" >> "$@/lib/SunCalc.class.php.tmp"
-	@mv "$@/lib/SunCalc.class.php.tmp" "$@/lib/SunCalc.class.php"
+	@echo '<?php' | cat - includes/pre.all > "$@/lib/suncalc/SunCalc.class.php.tmp"
+	@grep --invert-match --fixed-strings '<?php' "$@/lib/suncalc/SunCalc.class.php" >> "$@/lib/suncalc/SunCalc.class.php.tmp"
+	@mv "$@/lib/suncalc/SunCalc.class.php.tmp" "$@/lib/suncalc/SunCalc.class.php"
 	cp CONTRIBUTING.md LICENSE.md "$@"
-
 
 ports/suncalc-php/composer.json: metainfo.json scripts/print_composer_json_file
 	./scripts/print_composer_json_file "$<" > "$@"
 
-ports/suncalc-php/README.md: metainfo.json scripts/print_readme
-	./scripts/print_readme "$<" PHP > "$@"
+ports/suncalc-php/README.md: templates/ports_README.md.j2 metainfo.json build/doc.xml scripts/template
+	scripts/template -i metainfo.json -t "$<" -d build/doc.xml --key-value target=php > "$@"
 
 .PHONY: php-dist
 php-dist: ports/suncalc-php ports/suncalc-php/composer.json ports/suncalc-php/README.md
@@ -218,3 +216,7 @@ test: docs
 	@echo
 	@echo -------- Testing Neko target.
 	@$(MAKE) $(MAKE_OPTIONS) --always-make build/test_suncalc.n
+
+
+.PHONY: .FORCE
+.FORCE:

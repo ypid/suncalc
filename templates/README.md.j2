@@ -1,0 +1,45 @@
+{% extends 'templates/base.md.j2' %}
+
+{% block post_build_status %}
+{% for target_key, target in meta.target_info.items() %}
+{% if target.package_badge is defined and target.package_badge is string %}
+[![{{ target.package_platform }} version]({{ target.package_badge }})]({{ target.package_url }})
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+{% block content %}
+## Supported languages/platforms
+
+{% for target_key in meta.target_info.keys()|sort %}
+{% set target = meta.target_info[target_key] %}
+{%   if target.package_badge is defined and target.package_badge is string %}
+* [{{ target.target_env_name }}]({{ target.package_url }})
+{%-   if target.repo_url is string %}
+, [{{ 'target build ' if (target.type|d('none') == 'target') else '' }}repo]({{ target.repo_url }})
+{%    endif %}
+{%   else %}
+* {{ target.target_env_name }}
+{%   endif %}
+{% endfor %}
+
+## Limitations
+
+The following limitations seems to be related which should mean that when they are fixed for one target, the tests for the other targets should also pass. If you need `SunCalc.getMoonTimes` for one of those targets, feel free to debug it further.
+
+* Python: `SunCalc.getMoonTimes` (`rise` date can not be calculated.).
+* C++: `SunCalc.getMoonTimes` (`segmentation fault`).
+* Java: `SunCalc.getMoonTimes` (`java.lang.NullPointerException`).
+* Neko: `SunCalc.getMoonTimes`
+
+## Unsure/untested
+
+* ActionScript 3: Does compile but I have no idea how to test it.
+* Flash: Does compile but I have no idea how to test it.
+
+## Unsupported
+
+* C#: Dependency `datetime` does not compile on target "datetime/3,0,2/src/datetime/DateTime.hx:146: characters 28-110 : haxe.Int64 should be Float"
+
+  Priority low.
+{% endblock %}
