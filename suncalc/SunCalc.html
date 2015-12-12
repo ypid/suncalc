@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"/><link href="../bootstrap-combined.min.css" rel="stylesheet" /><script type="text/javascript" src="../jquery-1.9.1.min.js"></script><script type="text/javascript" src="../bootstrap.min.js"></script><link href="../styles.css" rel="stylesheet" /><link rel="icon" href="../favicon.ico" type="image/x-icon"></link><script type="text/javascript" src="../nav.js"></script><script type="text/javascript" src="../index.js"></script><script type="text/javascript">var dox = {rootPath: "../",platforms: ["doc"]};</script><title>SunCalc</title></head><body><div class="navbar navbar-inverse navbar-fixed-top"><div class="navbar-inner"><form class="navbar-search pull-left" id="searchForm"><input id="search" type="text" class="search-query" placeholder="Filter" autocomplete="off"/></form><ul class="nav"><li id="select-platform" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Platform<b class="caret"></b></a><ul class="dropdown-menu"><li data="all"><a href="#">All Platforms</a></li><li data="doc"><a href="#">doc</a></li></ul></li></ul></div></div><div id="container"><div id="nav"></div><div id="content"><div class="header"><h1><code><span class="directive">class </span><span class="type">suncalc.SunCalc</span></code></h1></div><div class="body"><p class="availability">Available on all platforms</p><div class="doc"><p>The SunCalc class allows to calculate sun position,
+    sunlight phases (times for sunrise, sunset, dusk, etc.),
+    moon position and lunar phase for the given location and time.</p>
+<p>    The library was ported to Haxe by <a href="https://github.com/ypid">Robin <code>ypid</code> Schneider</a> to allow using it in a <a href="https://github.com/opening-hours/opening_hours.js/issues/136">opening hours</a> library.</p>
+<p>    It is based on the <a href="https://github.com/mourner/suncalc">JavaScript implementation</a>
+    created by <a href="http://agafonkin.com/en">Vladimir Agafonkin</a> (<a href="https://github.com/mourner">@mourner</a>)
+    as a part of the <a href="http://suncalc.net">SunCalc.net project</a>.</p>
+<p>    Most calculations are based on the formulas given in the excellent Astronomy Answers articles
+    about <a href="http://aa.quae.nl/en/reken/zonpositie.html">position of the sun</a>
+    and <a href="http://aa.quae.nl/en/reken/hemelpositie.html">the planets</a>.
+    You can read about different twilight phases calculated by SunCalc
+    in the <a href="https://en.wikipedia.org/wiki/Twilight">Twilight article on Wikipedia</a>.</p></div><h2>Class Fields</h2><div class="platform platform-doc"><a name="times"></a><h3><p><code><span class="keyword">static </span><span class="keyword">var</span> <a href="#times"><span class="identifier">times</span></a>:<a class="type" href="../Array.html">Array</a>&lt;<a class="type" href="../Array.html">Array</a>&lt;<a class="type" href="../Dynamic.html">Dynamic</a>&gt;&gt;</code></p></h3><div class="doc"><p>Contains all currently defined times.</p></div></div><div class="platform platform-doc"><a name="version"></a><h3><p><code><span class="keyword">static </span><span class="keyword">var</span> <a href="#version"><span class="identifier">version</span></a>:<a class="type" href="../String.html">String</a></code></p></h3><div class="doc"><p>Version of the suncalc library.</p></div></div><div class="platform platform-doc"><a name="version_hash"></a><h3><p><code><span class="keyword">static </span><span class="keyword">var</span> <a href="#version_hash"><span class="identifier">version_hash</span></a>:<a class="type" href="../String.html">String</a></code></p></h3><div class="doc"><p>git commit hash from which this library was build.</p></div></div><div class="platform platform-doc"><a name="version_haxe_compiler"></a><h3><p><code><span class="keyword">static </span><span class="keyword">var</span> <a href="#version_haxe_compiler"><span class="identifier">version_haxe_compiler</span></a>:<a class="type" href="../String.html">String</a></code></p></h3><div class="doc"><p>Version of Haxe used to build this library.</p></div></div><div class="platform platform-doc"><a name="addTime"></a><h3><p><code><span class="keyword">static </span><span class="keyword">function</span> <a href="#addTime"><span class="identifier">addTime</span></a>(angle:<a class="type" href="../Float.html">Float</a>, riseName:<a class="type" href="../String.html">String</a>, setName:<a class="type" href="../String.html">String</a>):<a class="type" href="../Void.html">Void</a></code></p></h3><div class="doc"><p>Adds a custom time to the <code>times</code> configuration.</p></div></div><div class="platform platform-doc"><a name="getMoonIllumination"></a><h3><p><code><span class="keyword">static </span><span class="keyword">function</span> <a href="#getMoonIllumination"><span class="identifier">getMoonIllumination</span></a>(date:<a class="type" href="../Date.html">Date</a>):{phase:<a class="type" href="../Float.html">Float</a>, fraction:<a class="type" href="../Float.html">Float</a>, angle:<a class="type" href="../Float.html">Float</a>}</code></p></h3><div class="doc"><p>Returns an object with the following properties:</p>
+<p>         - <code>fraction</code>: Illuminated fraction of the moon; varies from <code>0.0</code> (new moon) to <code>1.0</code> (full moon).</p>
+<p>         - <code>phase</code>: Moon phase; varies from <code>0.0</code> to <code>1.0</code>, described below.</p>
+<p>         - <code>angle</code>: Midpoint angle in radians of the illuminated limb of the moon reckoned eastward from the north point of the disk;
+           the moon is waxing if the angle is negative, and waning if positive.</p>
+<p>        Moon phase value should be interpreted like this:</p>
+<p>        <table><thead>
+        <tr>
+        <th align="left">Phase</th>
+        <th>Name</th>
+        </tr>
+        </thead><tbody>
+        <tr>
+        <td align="right">0</td>
+        <td>New Moon, Waxing Crescent</td>
+        </tr>
+        <tr>
+        <td align="right">0.25</td>
+        <td>First Quarter, Waxing Gibbous</td>
+        </tr>
+        <tr>
+        <td align="right">0.5</td>
+        <td>Full Moon, Waning Gibbous</td>
+        </tr>
+        <tr>
+        <td align="right">0.75</td>
+        <td>Last Quarter, Waning Crescent</td>
+        </tr>
+        </tbody></table></p></div></div><div class="platform platform-doc"><a name="getMoonPosition"></a><h3><p><code><span class="keyword">static </span><span class="keyword">function</span> <a href="#getMoonPosition"><span class="identifier">getMoonPosition</span></a>(date:<a class="type" href="../Date.html">Date</a>, lat:<a class="type" href="../Float.html">Float</a>, lng:<a class="type" href="../Float.html">Float</a>):{distance:<a class="type" href="../Float.html">Float</a>, azimuth:<a class="type" href="../Float.html">Float</a>, altitude:<a class="type" href="../Float.html">Float</a>}</code></p></h3><div class="doc"><p>Returns an object with the following properties:</p>
+<p>        - <code>altitude</code>: Moon altitude above the horizon in radians.</p>
+<p>        - <code>azimuth</code>: Moon azimuth in radians.</p>
+<p>        - <code>distance</code>: Distance to moon in kilometers.</p></div></div><div class="platform platform-doc"><a name="getMoonTimes"></a><h3><p><code><span class="keyword">static </span><span class="keyword">function</span> <a href="#getMoonTimes"><span class="identifier">getMoonTimes</span></a>(date:<a class="type" href="../Date.html">Date</a>, lat:<a class="type" href="../Float.html">Float</a>, lng:<a class="type" href="../Float.html">Float</a>, ?inUTC:<a class="type" href="../Bool.html">Bool</a>):<a class="type" href="../Map.html">Map</a>&lt;<a class="type" href="../String.html">String</a>, <a class="type" href="../Dynamic.html">Dynamic</a>&gt;</code></p></h3><div class="doc"><p>Returns an object with the following properties:</p>
+<p>         - <code>rise</code>: Moon rise time as <code><a href="../Date.html">Date</a></code>.</p>
+<p>         - <code>set</code>: Moon set time as <code><a href="../Date.html">Date</a></code>.</p>
+<p>         - <code>alwaysUp</code>: <code>true</code> if the moon never rises/sets and is always <em>above</em> the horizon during the day.</p>
+<p>         - <code>alwaysDown</code>: <code>true</code> if the moon is always <em>below</em> the horizon.</p>
+<p>        By default, it will search for moon rise and set during local user's day (from 0 to 24 hours).
+        If <code>inUTC</code> is set to true, it will instead search the specified date from 0 to 24 UTC hours.</p></div></div><div class="platform platform-doc"><a name="getPosition"></a><h3><p><code><span class="keyword">static </span><span class="keyword">function</span> <a href="#getPosition"><span class="identifier">getPosition</span></a>(date:<a class="type" href="../Date.html">Date</a>, lat:<a class="type" href="../Float.html">Float</a>, lng:<a class="type" href="../Float.html">Float</a>):{azimuth:<a class="type" href="../Float.html">Float</a>, altitude:<a class="type" href="../Float.html">Float</a>}</code></p></h3><div class="doc"><p>Returns an object with the following properties:</p>
+<p><code>altitude</code>: Sun altitude above the horizon in radians,
+          e.g. <code>0</code> at the horizon and <code>PI/2</code> at the zenith (straight over your head).</p>
+<p><code>azimuth</code>: Sun azimuth in radians (direction along the horizon, measured from south to west),
+          e.g. <code>0</code> is south and <code>PI * 3/4</code> is northwest.</p></div></div><div class="platform platform-doc"><a name="getTimes"></a><h3><p><code><span class="keyword">static </span><span class="keyword">function</span> <a href="#getTimes"><span class="identifier">getTimes</span></a>(date:<a class="type" href="../Date.html">Date</a>, lat:<a class="type" href="../Float.html">Float</a>, lng:<a class="type" href="../Float.html">Float</a>):<a class="type" href="../Map.html">Map</a>&lt;<a class="type" href="../String.html">String</a>, <a class="type" href="../Date.html">Date</a>&gt;</code></p></h3><div class="doc"><p>Returns an object with the following properties (each is a <code><a href="../Date.html">Date</a></code> object):</p>
+<p>        <table><thead>
+        <tr>
+        <th>Property</th>
+        <th>Description</th>
+        </tr>
+        </thead><tbody>
+        <tr>
+        <td><code>sunrise</code></td>
+        <td>sunrise (top edge of the sun appears on the horizon)</td>
+        </tr>
+        <tr>
+        <td><code>sunriseEnd</code></td>
+        <td>sunrise ends (bottom edge of the sun touches the horizon)</td>
+        </tr>
+        <tr>
+        <td><code>goldenHourEnd</code></td>
+        <td>morning golden hour (soft light, best time for photography) ends</td>
+        </tr>
+        <tr>
+        <td><code>solarNoon</code></td>
+        <td>solar noon (sun is in the highest position)</td>
+        </tr>
+        <tr>
+        <td><code>goldenHour</code></td>
+        <td>evening golden hour starts</td>
+        </tr>
+        <tr>
+        <td><code>sunsetStart</code></td>
+        <td>sunset starts (bottom edge of the sun touches the horizon)</td>
+        </tr>
+        <tr>
+        <td><code>sunset</code></td>
+        <td>sunset (sun disappears below the horizon, evening civil twilight starts)</td>
+        </tr>
+        <tr>
+        <td><code>dusk</code></td>
+        <td>dusk (evening nautical twilight starts)</td>
+        </tr>
+        <tr>
+        <td><code>nauticalDusk</code></td>
+        <td>nautical dusk (evening astronomical twilight starts)</td>
+        </tr>
+        <tr>
+        <td><code>night</code></td>
+        <td>night starts (dark enough for astronomical observations)</td>
+        </tr>
+        <tr>
+        <td><code>nadir</code></td>
+        <td>nadir (darkest moment of the night, sun is in the lowest position)</td>
+        </tr>
+        <tr>
+        <td><code>nightEnd</code></td>
+        <td>night ends (morning astronomical twilight starts)</td>
+        </tr>
+        <tr>
+        <td><code>nauticalDawn</code></td>
+        <td>nautical dawn (morning nautical twilight starts)</td>
+        </tr>
+        <tr>
+        <td><code>dawn</code></td>
+        <td>dawn (morning nautical twilight ends, morning civil twilight starts)</td>
+        </tr>
+        </tbody></table></p></div></div></div></div></div></body></html>
