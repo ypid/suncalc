@@ -42,7 +42,7 @@ haxelib.json: metainfo.json scripts/print_haxelib_json_file
 
 ## Test and build for all supported targets.
 .PHONY: all
-all: dependencies-get test build dist
+all: test build dist
 
 ## Build for all supported targets.
 .PHONY: build
@@ -107,7 +107,7 @@ build/test_suncalc_php: $(SRC) $(TEST_SRC)
 	haxe $(HFLAGS) $(LIBS) -cp test -main Test -php "$@"
 	php "$@/index.php"
 
-ports/suncalc-php: $(SRC) includes/pre.all
+ports/suncalc-php: $(SRC) includes/pre.all .FORCE
 	haxe $(HFLAGS_BUILD) -php "$@"
 	@echo '<?php' | cat - includes/pre.all > "$@/lib/suncalc/SunCalc.class.php.tmp"
 	@grep --invert-match --fixed-strings '<?php' "$@/lib/suncalc/SunCalc.class.php" >> "$@/lib/suncalc/SunCalc.class.php.tmp"
@@ -192,7 +192,7 @@ build/doc.xml: $(SRC)
 	haxe $(HMAIN) $(HFLAGS) $(LIBS) -xml "$@"
 
 .PHONY: docs
-docs: build/doc.xml includes/css_post.css
+docs: build/doc.xml includes/css_post.css README.md
 	haxelib run dox -i "$<" -o "$@"
 	cat includes/css_post.css >> "$@/styles.css"
 
