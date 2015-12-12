@@ -4,7 +4,10 @@ language: haxe
 
 haxe:
   - '3.2.1'
-  - 'development'
+
+  ## We test if all the target builds are source code deterministic.
+  ## This can only be ensured to work against the version on my dev machine.
+  # - 'development'
 
 addons:
   apt:
