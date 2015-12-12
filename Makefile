@@ -220,5 +220,12 @@ test: docs
 .PHONY: dist
 dist: php-dist
 
+.PHONY: push
+push:
+	git submodule foreach git diff --exit-code
+	git diff --exit-code
+	git submodule foreach git push
+	git push
+
 .PHONY: .FORCE
 .FORCE:
