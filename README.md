@@ -27,7 +27,7 @@ You can read about different twilight phases calculated by SunCalc
 in the [Twilight article on Wikipedia](https://en.wikipedia.org/wiki/Twilight).
 
 
-Refer to the [API documentation](https://ypid.github.io/suncalc/SunCalc.html) for details.
+Refer to the [API documentation](https://ypid.github.io/suncalc/suncalc/SunCalc.html) for details.
 
 ## Supported languages/platforms
 

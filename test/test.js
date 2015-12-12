@@ -1,5 +1,4 @@
-
-var SunCalc = require('../build/suncalc'),
+var SunCalc = require('../build/suncalc_js/suncalc'),
     t = require('tap');
 
 function near(val1, val2, margin) {

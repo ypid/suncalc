@@ -1,9 +1,9 @@
 LIBS         ?= -lib datetime -lib version
-HMAIN        ?= -main SunCalc
+HMAIN        ?= suncalc.SunCalc
 HFLAGS       ?= -cp src
 HFLAGS_BUILD ?= $(HMAIN) $(HFLAGS) -D normal_build $(LIBS)
 
-SRC      ?= $(wildcard src/*.hx)
+SRC      ?= $(wildcard src/suncalc/*.hx)
 TEST_SRC ?= $(wildcard test/*)
 
 TARGET_SUPPORT_LIBS ?= hxcpp hxjava hxnodejs
@@ -62,24 +62,25 @@ clean:
 
 ## js {{{
 .PHONY: js
-js: build/suncalc.js
+js: build/suncalc_js/suncalc.js
 
 .PHONY: node
 node: js
 
 build/test_suncalc.js: language/js.hxml $(SRC) $(TEST_SRC)
-	haxe "$<" $(HFLAGS) $(LIBS) -lib hxnodejs -cp test -main Test -js "$@"
+	haxe $(HFLAGS) $(LIBS) -lib hxnodejs -cp test -main Test -js "$@"
 	node "$@"
 
-build/suncalc.js: language/js.hxml $(SRC) $(TEST_SRC) includes/pre.all includes/js_pre.js includes/js_post.js
+build/suncalc_js/suncalc.js: language/js.hxml $(SRC) $(TEST_SRC) includes/pre.all includes/js_pre.js includes/js_post.js
+	mkdir --parents $(shell dirname $@)
 	haxe "$<" $(HFLAGS_BUILD) -js build/suncalc.haxe.js
 	cat includes/pre.all includes/js_pre.js build/suncalc.haxe.js includes/js_post.js > "$@"
 	@echo 'Run native JS tests from mourner to ensure API compatibility.'
 	node test/test.js >/dev/zero
 
 .PHONY: min
-min: build/suncalc.min.js
-build/suncalc.min.js: build/suncalc.js
+min: build/suncalc_js/suncalc.min.js
+build/suncalc_js/suncalc.min.js: build/suncalc_js/suncalc.js
 	uglifyjs "$<" --output "$@" --comments '/github.com/' --lint
 ## }}}
 
@@ -94,8 +95,8 @@ build/test_suncalc_java: $(SRC) $(TEST_SRC)
 .PHONY: build/suncalc_java
 build/suncalc_java: $(SRC) includes/pre.all
 	haxe $(HFLAGS_BUILD) -java "$@"
-	@cat includes/pre.all "$@/src/haxe/root/SunCalc.java" > "$@/src/haxe/root/SunCalc.java.tmp"
-	@mv "$@/src/haxe/root/SunCalc.java.tmp" "$@/src/haxe/root/SunCalc.java"
+	@cat includes/pre.all "$@/src/suncalc/SunCalc.java" > "$@/src/suncalc/SunCalc.java.tmp"
+	@mv "$@/src/suncalc/SunCalc.java.tmp" "$@/src/suncalc/SunCalc.java"
 ## }}}
 
 ## php {{{
@@ -149,8 +150,8 @@ build/test_suncalc_cpp: $(SRC) $(TEST_SRC)
 .PHONY: build/suncalc_cpp
 build/suncalc_cpp: $(SRC) includes/pre.all
 	haxe $(HFLAGS_BUILD) -cpp "$@"
-	@cat includes/pre.all "$@/src/SunCalc.cpp" > "$@/src/SunCalc.cpp.tmp"
-	@mv "$@/src/SunCalc.cpp.tmp" "$@/src/SunCalc.cpp"
+	@cat includes/pre.all "$@/src/suncalc/SunCalc.cpp" > "$@/src/suncalc/SunCalc.cpp.tmp"
+	@mv "$@/src/suncalc/SunCalc.cpp.tmp" "$@/src/suncalc/SunCalc.cpp"
 ## }}}
 
 ## neko {{{
@@ -201,7 +202,7 @@ docs: build/doc.xml includes/css_post.css
 test: docs
 	@echo
 	@echo --------Testing JavaScript target.
-	@$(MAKE) $(MAKE_OPTIONS) --always-make build/test_suncalc.js build/suncalc.js
+	@$(MAKE) $(MAKE_OPTIONS) --always-make build/test_suncalc.js build/suncalc_js/suncalc.js
 	@echo
 	@echo -------- Testing Python target.
 	@$(MAKE) $(MAKE_OPTIONS) --always-make build/test_suncalc.py

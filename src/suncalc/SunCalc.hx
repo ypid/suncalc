@@ -1,4 +1,4 @@
-package ;
+package suncalc;
 
 #if !js
 import datetime.DateTime;
@@ -14,7 +14,7 @@ import datetime.DateTime;
     sunlight phases (times for sunrise, sunset, dusk, etc.),
     moon position and lunar phase for the given location and time.
 
-    The library was ported to Haxe by Robin `ypid` Schneider.
+    The library was ported to Haxe by [Robin `ypid` Schneider](https://github.com/ypid) to allow using it in a [opening hours](https://github.com/opening-hours/opening_hours.js/issues/136) library.
 
     It is based on the [JavaScript implementation](https://github.com/mourner/suncalc)
     created by [Vladimir Agafonkin](http://agafonkin.com/en) ([@mourner](https://github.com/mourner))

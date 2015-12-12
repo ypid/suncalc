@@ -2,6 +2,8 @@ import haxe.unit.TestCase;
 import haxe.unit.TestRunner;
 import datetime.DateTime;
 
+import suncalc.SunCalc;
+
 class Test extends TestCase {
 
     var date:Date = DateTime.fromString('2013-03-05T00:00:00Z');
