@@ -29,7 +29,7 @@ Refer to the [API documentation](https://ypid.github.io/suncalc/suncalc/SunCalc.
 
 ## Install
 
-Install the library for your favorite language by executing the appropriate command:
+Install the library for your favorite language by executing one of the following commands:
 
 ```Shell
 npm install suncalc             # JavaScript/Node.JS

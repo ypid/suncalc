@@ -18,6 +18,9 @@ default: docs
 README.md: metainfo.json $(TEMPLATE_SRC) build/doc.xml scripts/template
 	scripts/template -i "$<" -t templates/README.md.j2 -d build/doc.xml > "$@"
 
+.PHONY: check
+check: test check-diff
+
 ## Fix branches of submodules after cloning.
 .PHONY: fix-sub-branches
 fix-sub-branches:
@@ -37,6 +40,8 @@ haxe-dependencies-get: haxelib.json
 .PHONY: haxe-dependencies-target-get
 haxe-dependencies-target-get: Makefile
 	for lib in $(TARGET_SUPPORT_LIBS); do yes | haxelib install "$$lib"; done
+
+link-hooks: .git/hooks/pre-commit
 
 haxelib.json: metainfo.json scripts/print_haxelib_json_file
 	./scripts/print_haxelib_json_file "$<" > "$@"
@@ -233,3 +238,6 @@ push: check-diff
 
 .PHONY: .FORCE
 .FORCE:
+
+.git/hooks/%: scripts/%-hook
+	ln --symbolic --force "../../$<" "$@"
