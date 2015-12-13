@@ -24,6 +24,7 @@
             "package_platform": "NPM",
             "package_url": "https://www.npmjs.org/package/suncalc",
             "package_badge": "https://badge.fury.io/js/suncalc.svg",
+            "install_cmd": "npm install suncalc",
             "repo_url": "https://github.com/mourner/suncalc",
             "type": "source"
         },
@@ -37,6 +38,7 @@
             "package_platform": "PHP",
             "package_url": "https://packagist.org/packages/ypid/suncalc",
             "package_badge": "https://badge.fury.io/ph/ypid%2Fsuncalc.svg",
+            "install_cmd": "composer require ypid/suncalc",
             "repo_url": "https://github.com/ypid/suncalc-php",
             "type": "target"
         },
