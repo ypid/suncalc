@@ -46,9 +46,10 @@ Install the library for your favorite language by executing one of the following
 ```Shell
 {% for target_key in meta.target_info.keys()|sort %}
 {% set target = meta.target_info[target_key] %}
-{%   if target.install_cmd is defined and target.install_cmd is string %}
-{% set needed_space = 42 - 10 - (target.install_cmd|length) %}
-{{ target.install_cmd }}{% for fnord in range(needed_space) %} {% endfor %}# {{ target.target_env_name }}
+{%   if target.package_url is defined and target.package_url is string %}
+{%     set install_cmd = target.install_cmd | d(target.package_platform.lower() + ' install ' + meta.name) %}
+{%     set needed_space = 42 - 10 - (install_cmd|length) %}
+{{     install_cmd }}{% for fnord in range(needed_space) %} {% endfor %}# {{ target.target_env_name }}
 {%   endif %}
 {% endfor %}
 ```

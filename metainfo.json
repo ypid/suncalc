@@ -24,7 +24,6 @@
             "package_platform": "haxelib",
             "package_url": "http://lib.haxe.org/p/suncalc",
             "package_badge": "https://img.shields.io/badge/Haxe-VERSION-blue.svg",
-            "install_cmd": "npm install suncalc",
             "repo_url": "https://github.com/mourner/suncalc",
             "type": "native port"
         },
@@ -34,7 +33,6 @@
             "package_platform": "NPM",
             "package_url": "https://www.npmjs.org/package/suncalc",
             "package_badge": "https://img.shields.io/npm/v/suncalc.svg",
-            "install_cmd": "npm install suncalc",
             "repo_url": "https://github.com/mourner/suncalc",
             "type": "native port"
         },

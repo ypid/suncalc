@@ -2,5 +2,5 @@
 
 make docs
 make build/test_suncalc.js
-make dist
+make dist-push
 make check-diff

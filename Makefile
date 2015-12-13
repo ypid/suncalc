@@ -242,7 +242,10 @@ test: docs
 
 .PHONY: dist
 dist: php-dist
-	cd ports/suncalc-php/ && git commit --all -m 'Auto commit without commit message.' && git push || :
+
+.PHONY: dist-push
+dist-push: dist
+	git submodule foreach '[ "$$(dirname $$name)" = "build" ] && git commit --all -m "Auto commit without commit message." && git push || :'
 
 ## All files should be properly rebuild, nothing should be changed.
 .PHONY: check-diff

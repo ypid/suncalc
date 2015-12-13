@@ -33,7 +33,7 @@ Refer to the [API documentation](https://ypid.github.io/suncalc/suncalc/SunCalc.
 Install the library for your favorite language by executing one of the following commands:
 
 ```Shell
-npm install suncalc             # Haxe
+haxelib install suncalc         # Haxe
 npm install suncalc             # JavaScript/Node.JS
 composer require ypid/suncalc   # PHP
 ```
