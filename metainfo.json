@@ -26,11 +26,13 @@
             "package_badge": "https://badge.fury.io/js/suncalc.svg",
             "install_cmd": "npm install suncalc",
             "repo_url": "https://github.com/mourner/suncalc",
-            "type": "source"
+            "type": "native port"
         },
         "java": {
             "target_env_name": "Java",
-            "target_env_url": "https://en.wikipedia.org/wiki/Java_%28programming_language%29"
+            "target_env_url": "https://en.wikipedia.org/wiki/Java_%28programming_language%29",
+            "repo_url": "https://github.com/mncaudill/SunCalc-Java",
+            "type": "native port"
         },
         "php": {
             "target_env_name": "PHP",
@@ -44,7 +46,9 @@
         },
         "python": {
             "target_env_name": "Python",
-            "target_env_url": "https://en.wikipedia.org/wiki/Python_%28programming_language%29"
+            "target_env_url": "https://en.wikipedia.org/wiki/Python_%28programming_language%29",
+            "repo_url": "https://github.com/Broham/suncalcPy",
+            "type": "native port"
         },
         "cpp": {
             "target_env_name": "C++",
@@ -63,6 +67,26 @@
         "as3": {
             "target_env_name": "ActionScript 3",
             "target_env_url": "https://en.wikipedia.org/wiki/ActionScript"
+        }
+    },
+    "target_info_haxe_unsupported": {
+        "go": {
+            "target_env_name": "Go",
+            "target_env_url": "https://en.wikipedia.org/wiki/Go_%28programming_language%29",
+            "repo_url": "https://github.com/mourner/suncalc-go",
+            "type": "native port"
+        },
+        "swift": {
+            "target_env_name": "Swift",
+            "target_env_url": "https://en.wikipedia.org/wiki/Swift_%28programming_language%29",
+            "repo_url": "https://github.com/shanus/suncalc-swift",
+            "type": "native port"
+        },
+        "objective-c": {
+            "target_env_name": "Objective-C",
+            "target_env_url": "https://en.wikipedia.org/wiki/Objective-C",
+            "repo_url": "https://github.com/swerdlow/suncalc-objective-c",
+            "type": "native port"
         }
     },
     "authors": [

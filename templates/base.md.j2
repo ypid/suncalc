@@ -1,8 +1,13 @@
-{% macro target_package_badge(target) %}{# ((( #}
-{% if target.package_badge is defined and target.package_badge is string %}
-[![{{ target.package_platform }} version]({{ target.package_badge }})]({{ target.package_url }})
-{% endif %}
-{%- endmacro %}{# ))) #}
+{%- macro supported_lang(target) -%}{# ((( #}
+{%- if target.package_badge is defined and target.package_badge is string -%}
+* [{{ target.target_env_name }}]({{ target.package_url }})
+{%- else -%}
+* {{ target.target_env_name }}
+{%- endif -%}
+{%- if target.repo_url is string %}
+ ([{{ 'target build ' if (target.type|d('none') == 'target') else (target.type + ' ') }}repository]({{ target.repo_url }}))
+{%- endif -%}
+{%- endmacro -%}{# ))) #}
 
 {% block title %}
 # {{ meta.name }}

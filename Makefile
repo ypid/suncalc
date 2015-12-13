@@ -226,6 +226,7 @@ test: docs
 .PHONY: dist
 dist: php-dist
 
+## All files should be properly rebuild, nothing should be changed.
 .PHONY: check-diff
 check-diff:
 	git submodule foreach "find . -type f -not -iregex '\(.*suncalc.*\|\./\.git.*\)' -print0 | xargs -0 git diff --exit-code"

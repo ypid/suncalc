@@ -1,10 +1,6 @@
 {% extends 'templates/base.md.j2' %}
 {% set package_platform = meta.target_info[kv.target].package_platform %}
 
-{% block post_build_status %}
-{{ target_package_badge(meta.target_info[kv.target]) }}
-{% endblock %}
-
 {% block content %}
 ## Internals
 This library was automatically build using [Haxe](http://haxe.org/) to target {{ package_platform }}.

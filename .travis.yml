@@ -40,6 +40,4 @@ install:
 
 script:
   - make all
-
-  ## All files should be properly rebuild, nothing should be changed.
   - make check-diff
