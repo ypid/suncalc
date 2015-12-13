@@ -8,6 +8,7 @@ TEST_SRC     ?= $(wildcard test/*)
 TEMPLATE_SRC ?= $(wildcard templates/*.j2)
 
 TARGET_SUPPORT_LIBS ?= hxcpp hxjava hxnodejs
+DEV_LIBS ?= dox
 
 MAKE_OPTIONS ?= --no-print-directory
 
@@ -39,7 +40,7 @@ haxe-dependencies-get: haxelib.json
 
 .PHONY: haxe-dependencies-target-get
 haxe-dependencies-target-get: Makefile
-	for lib in $(TARGET_SUPPORT_LIBS); do yes | haxelib install "$$lib"; done
+	for lib in $(TARGET_SUPPORT_LIBS) $(DEV_LIBS); do yes | haxelib install "$$lib"; done
 
 link-hooks: .git/hooks/pre-commit
 
@@ -65,6 +66,21 @@ build: js \
 clean:
 	rm -rf build
 
+
+## haxe {{{
+.PHONY: haxe
+haxe: build/suncalc_js/suncalc.js
+
+.PHONY: build/suncalc_haxe
+build/suncalc_haxe: src/suncalc/SunCalc.hx includes/pre.all README.md haxelib.json
+	mkdir --parents "$@/suncalc"
+	cat includes/pre.all "$<" > "$@/suncalc/SunCalc.hx"
+	cp haxelib.json README.md CONTRIBUTING.md LICENSE.md "$@"
+
+haxe-dist: build/suncalc_haxe
+	haxelib submit "$<"
+
+## }}}
 
 ## js {{{
 .PHONY: js

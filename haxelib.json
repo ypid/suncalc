@@ -11,12 +11,10 @@
   "version": "1.7.0",
   "releasenote": "First release of this port written in Haxe.",
   "contributors": [
-    "ypid",
-    "mourner"
+    "ypid"
   ],
   "dependencies": {
     "datetime": "",
-    "version": "",
-    "dox": ""
+    "version": ""
   }
 }

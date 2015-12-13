@@ -5,8 +5,9 @@
      instead have a look at: metainfo.json, templates/README.md.j2. -->
 
 [![Build Status](https://travis-ci.org/ypid/suncalc.svg?branch=master)](https://travis-ci.org/ypid/suncalc)
-[![NPM version](https://badge.fury.io/js/suncalc.svg)](https://www.npmjs.org/package/suncalc)
-[![PHP version](https://badge.fury.io/ph/ypid%2Fsuncalc.svg)](https://packagist.org/packages/ypid/suncalc)
+[![Haxe version](https://img.shields.io/badge/Haxe-v1.7.0-blue.svg)](http://lib.haxe.org/p/suncalc)
+[![NPM version](https://img.shields.io/npm/v/suncalc.svg)](https://www.npmjs.org/package/suncalc)
+[![Packagist version](https://img.shields.io/packagist/v/ypid/suncalc.svg)](https://packagist.org/packages/ypid/suncalc)
 
 
 The SunCalc module allows to calculate sun position,
@@ -32,6 +33,7 @@ Refer to the [API documentation](https://ypid.github.io/suncalc/suncalc/SunCalc.
 Install the library for your favorite language by executing one of the following commands:
 
 ```Shell
+npm install suncalc             # Haxe
 npm install suncalc             # JavaScript/Node.JS
 composer require ypid/suncalc   # PHP
 ```
@@ -39,6 +41,7 @@ composer require ypid/suncalc   # PHP
 ## Supported languages/platforms
 
 * C++
+* [Haxe](http://lib.haxe.org/p/suncalc) ([native port repository](https://github.com/mourner/suncalc))
 * Java ([native port repository](https://github.com/mncaudill/SunCalc-Java))
 * [JavaScript/Node.JS](https://www.npmjs.org/package/suncalc) ([native port repository](https://github.com/mourner/suncalc))
 * NekoVM

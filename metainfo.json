@@ -18,12 +18,22 @@
     "version": "1.7.0",
     "releasenote": "First release of this port written in Haxe.",
     "target_info": {
+        "haxe": {
+            "target_env_name": "Haxe",
+            "target_env_url": "https://en.wikipedia.org/wiki/Haxe",
+            "package_platform": "Haxe",
+            "package_url": "http://lib.haxe.org/p/suncalc",
+            "package_badge": "https://img.shields.io/badge/Haxe-VERSION-blue.svg",
+            "install_cmd": "npm install suncalc",
+            "repo_url": "https://github.com/mourner/suncalc",
+            "type": "native port"
+        },
         "js": {
             "target_env_name": "JavaScript/Node.JS",
             "target_env_url": "https://en.wikipedia.org/wiki/JavaScript",
             "package_platform": "NPM",
             "package_url": "https://www.npmjs.org/package/suncalc",
-            "package_badge": "https://badge.fury.io/js/suncalc.svg",
+            "package_badge": "https://img.shields.io/npm/v/suncalc.svg",
             "install_cmd": "npm install suncalc",
             "repo_url": "https://github.com/mourner/suncalc",
             "type": "native port"
@@ -37,9 +47,9 @@
         "php": {
             "target_env_name": "PHP",
             "target_env_url": "https://en.wikipedia.org/wiki/PHP",
-            "package_platform": "PHP",
+            "package_platform": "Packagist",
             "package_url": "https://packagist.org/packages/ypid/suncalc",
-            "package_badge": "https://badge.fury.io/ph/ypid%2Fsuncalc.svg",
+            "package_badge": "https://img.shields.io/packagist/v/ypid/suncalc.svg",
             "install_cmd": "composer require ypid/suncalc",
             "repo_url": "https://github.com/ypid/suncalc-php",
             "type": "target"
@@ -96,7 +106,7 @@
             "email": "ypid@riseup.net",
             "homepage": "http://ypid.de/",
             "role": "Maintainer/Rewrite in Haxe",
-            "targets": "all"
+            "targets": [ "haxe", "php" ]
         },
         {
             "name": "Vladimir Agafonkin",
@@ -104,14 +114,13 @@
             "email": "agafonkin@gmail.com",
             "homepage": "http://agafonkin.com/en",
             "role": "Initial implementation in JavaScript",
-            "targets": [ "js" ]
+            "targets": [ "js", "go" ]
         }
     ],
     "dependencies": {
         "haxe": {
             "datetime": "",
-            "version": "",
-            "dox": ""
+            "version": ""
         }
     }
 }

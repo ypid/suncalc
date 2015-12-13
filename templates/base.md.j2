@@ -1,5 +1,5 @@
 {%- macro supported_lang(target) -%}{# ((( #}
-{%- if target.package_badge is defined and target.package_badge is string -%}
+{%- if target.package_url is defined and target.package_url is string -%}
 * [{{ target.target_env_name }}]({{ target.package_url }})
 {%- else -%}
 * {{ target.target_env_name }}
@@ -25,7 +25,7 @@
 {% for target_key in meta.target_info.keys()|sort %}
 {% set target = meta.target_info[target_key] %}
 {% if target.package_badge is defined and target.package_badge is string %}
-[![{{ target.package_platform }} version]({{ target.package_badge }})]({{ target.package_url }})
+[![{{ target.package_platform }} version]({{ target.package_badge | replace("VERSION", "v" + meta.version) }})]({{ target.package_url }})
 {% endif %}
 {% endfor %}
 {% endblock %}

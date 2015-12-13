@@ -14,6 +14,6 @@ jq '{
     description: .description,
     version: .version,
     releasenote: "First release of this port written in Haxe.",
-    contributors: [ .authors[].nick ],
+    contributors: [ .authors[] | select(contains({ targets: [ "haxe" ]})).nick ],
     dependencies: .dependencies.haxe,
 }' "$INPUT_JSON"
