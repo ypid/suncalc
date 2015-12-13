@@ -217,6 +217,7 @@ build/doc.xml: $(SRC)
 docs: build/doc.xml includes/css_post.css README.md
 	haxelib run dox -i "$<" -o "$@"
 	cat includes/css_post.css >> "$@/styles.css"
+	cd "$@" && git commit --all -m 'Auto commit without commit message.' && git push || :
 
 .PHONY: test
 test: docs
@@ -241,6 +242,7 @@ test: docs
 
 .PHONY: dist
 dist: php-dist
+	cd ports/suncalc-php/ && git commit --all -m 'Auto commit without commit message.' && git push || :
 
 ## All files should be properly rebuild, nothing should be changed.
 .PHONY: check-diff
