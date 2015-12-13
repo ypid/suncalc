@@ -10,7 +10,7 @@ jq '{
     name: .name,
     url: .url,
     license: .license_short,
-    tags: .tags,
+    tags: (.tags + [ "cross" ]),
     description: .description,
     version: .version,
     releasenote: "First release of this port written in Haxe.",

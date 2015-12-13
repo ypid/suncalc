@@ -5,7 +5,8 @@
   "tags": [
     "sun",
     "moon",
-    "astronomy"
+    "astronomy",
+    "cross"
   ],
   "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
   "version": "1.7.0",
