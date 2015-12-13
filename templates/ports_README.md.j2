@@ -1,9 +1,10 @@
 {% extends 'templates/base.md.j2' %}
 {% set package_platform = meta.target_info[kv.target].package_platform %}
+{% set target_env_name  = meta.target_info[kv.target].target_env_name %}
 
 {% block content %}
 ## Internals
-This library was automatically build using [Haxe](http://haxe.org/) to target {{ package_platform }}.
+This library was automatically build using [Haxe](http://haxe.org/) to target {{ target_env_name }}.
 
-Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [this repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ package_platform }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
+Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [this repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ target_env_name }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
 {% endblock %}
