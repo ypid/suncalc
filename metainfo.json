@@ -24,7 +24,6 @@
             "package_platform": "haxelib",
             "package_url": "http://lib.haxe.org/p/suncalc",
             "package_badge": "https://img.shields.io/badge/Haxe-VERSION-blue.svg",
-            "repo_url": "https://github.com/mourner/suncalc",
             "type": "native port"
         },
         "js": {

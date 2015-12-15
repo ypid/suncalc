@@ -41,7 +41,7 @@ composer require ypid/suncalc   # PHP
 ## Supported languages/platforms
 
 * C++
-* [Haxe](http://lib.haxe.org/p/suncalc) ([native port repository](https://github.com/mourner/suncalc))
+* [Haxe](http://lib.haxe.org/p/suncalc)
 * Java ([native port repository](https://github.com/mncaudill/SunCalc-Java))
 * [JavaScript/Node.JS](https://www.npmjs.org/package/suncalc) ([native port repository](https://github.com/mourner/suncalc))
 * NekoVM
