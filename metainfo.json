@@ -13,7 +13,7 @@
     "license_short": "BSD",
     "license_full": "BSD-2-Clause",
     "license_url": "https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29",
-    "tags": ["sun", "moon", "astronomy"],
+    "tags": ["sun", "moon", "astronomy", "date", "time"],
     "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
     "version": "1.7.0",
     "releasenote": "First release of this port written in Haxe.",

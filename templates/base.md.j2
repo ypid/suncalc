@@ -49,7 +49,7 @@ Install the library for your favorite language by executing one of the following
 {%   if target.package_url is defined and target.package_url is string %}
 {%     set install_cmd = target.install_cmd | d(target.package_platform.lower() + ' install ' + meta.name) %}
 {%     set needed_space = 42 - 10 - (install_cmd|length) %}
-{{     install_cmd }}{% for fnord in range(needed_space) %} {% endfor %}# {{ target.target_env_name }}
+{{     install_cmd }}{{ ' ' * needed_space }}# {{ target.target_env_name }}
 {%   endif %}
 {% endfor %}
 ```

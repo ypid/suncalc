@@ -6,6 +6,8 @@
     "sun",
     "moon",
     "astronomy",
+    "date",
+    "time",
     "cross"
   ],
   "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",

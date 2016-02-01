@@ -31,17 +31,17 @@ import datetime.DateTime;
 class SunCalc {
 
     /**
-        Version of the suncalc library.
+        Version of the suncalc library written in Haxe.
     **/
     public static var version(default, never):String = Version.getVersion();
 
     /**
-        git commit hash from which this library was build.
+        git commit hash from which the target port was build.
     **/
     public static var version_hash(default, never):String = Version.getGitCommitHash();
 
     /**
-        Version of Haxe used to build this library.
+        Version of Haxe used to build the target port.
     **/
     public static var version_haxe_compiler(default, never):String = Version.getHaxeCompilerVersion();
 
