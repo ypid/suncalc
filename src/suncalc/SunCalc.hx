@@ -36,11 +36,6 @@ class SunCalc {
     public static var version(default, never):String = Version.getVersion();
 
     /**
-        git commit hash from which the target port was build.
-    **/
-    public static var version_hash(default, never):String = Version.getGitCommitHash();
-
-    /**
         Version of Haxe used to build the target port.
     **/
     public static var version_haxe_compiler(default, never):String = Version.getHaxeCompilerVersion();
