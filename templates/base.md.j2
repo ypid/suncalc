@@ -21,12 +21,15 @@
 {% block build_status %}
 [![Build Status]({{ meta.integration_testing.img }})]({{ meta.integration_testing.url}})
 {% endblock %}
+{% block license_badge %}
+[![{{ meta.license_short }} licensed](https://img.shields.io/badge/license-{{ meta.license_short }}-blue.svg)]({{ meta.license_url }})
+{% endblock %}
 {% block target_package_badges %}
 {% for target_key in meta.target_info.keys()|sort %}
-{% set target = meta.target_info[target_key] %}
-{% if target.package_badge is defined and target.package_badge is string %}
+{%   set target = meta.target_info[target_key] %}
+{%   if target.package_badge is defined and target.package_badge is string %}
 [![{{ target.package_platform }} version]({{ target.package_badge | replace("VERSION", "v" + meta.version) }})]({{ target.package_url }})
-{% endif %}
+{%   endif %}
 {% endfor %}
 {% endblock %}
 
