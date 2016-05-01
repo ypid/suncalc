@@ -23,7 +23,7 @@
 [![Build Status]({{ meta.integration_testing.img }})]({{ meta.integration_testing.url}})
 {% endblock %}
 {% block license_badge %}
-[![{{ meta.license_short }} licensed](https://img.shields.io/badge/license-{{ meta.license_short }}-blue.svg)]({{ meta.license_url }})
+[![{{ meta.license.name.short }} licensed](https://img.shields.io/badge/license-{{ meta.license.name.short }}-blue.svg)]({{ meta.license.url.default }})
 {% endblock %}
 {% block target_package_badges %}
 {% for target_key in meta.target_info.keys()|sort %}
@@ -64,5 +64,5 @@ Install the library for your favorite language by executing one of the following
 {% block license %}
 ## License
 
-[{{ meta.license_full }}]({{ meta.license_url }})
+[{{ meta.license.name.spdx_identifier }}]({{ meta.license.url.default }})
 {%- endblock %}

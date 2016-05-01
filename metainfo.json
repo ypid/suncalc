@@ -10,9 +10,19 @@
         "url": "https://travis-ci.org/ypid/suncalc",
         "img": "https://travis-ci.org/ypid/suncalc.svg?branch=master"
     },
-    "license_short": "BSD",
-    "license_full": "BSD-2-Clause",
-    "license_url": "https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29",
+    "license": {
+        "name": {
+            "short": "BSD",
+            "full": "BSD 2-clause \"Simplified\" License",
+            "spdx_identifier": "BSD-2-Clause"
+        },
+        "url": {
+            "default": "https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29",
+            "tldrlegal": "https://tldrlegal.com/license/bsd-2-clause-license-%28freebsd%29",
+            "spdx": "https://spdx.org/licenses/BSD-2-Clause.html",
+            "wikipedia": "https://en.wikipedia.org/wiki/BSD_licenses#2-clause"
+        }
+    },
     "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
     "version": "1.7.0",
     "releasenote": "First release of this port written in Haxe.",
@@ -23,7 +33,8 @@
             "package_platform": "haxelib",
             "package_url": "http://lib.haxe.org/p/suncalc",
             "package_badge": "https://img.shields.io/badge/Haxe-VERSION-blue.svg",
-            "type": "native port"
+            "type": "native port",
+            "source_file": "https://github.com/ypid/suncalc/blob/master/src/suncalc/SunCalc.hx"
         },
         "js": {
             "target_env_name": "JavaScript/Node.JS",
@@ -110,7 +121,7 @@
             "email": "agafonkin@gmail.com",
             "homepage": "http://agafonkin.com/en",
             "role": "Initial implementation in JavaScript",
-            "targets": [ "js", "go" ]
+            "targets": [ "js", "go", "role::upstream" ]
         }
     ],
     "dependencies": {

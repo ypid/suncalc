@@ -1,7 +1,7 @@
 {
     name: .[0].name,
     url: .[0].url,
-    license: .[0].license_short,
+    license: .[0].license.name.short,
     tags: (.[1].keywords + [ "cross" ] | sort),
     description: .[0].description,
     version: .[0].version,

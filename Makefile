@@ -100,6 +100,9 @@ haxe: build/suncalc_js/suncalc.js
 haxelib.json: templates/haxelib.json.jq metainfo.json package.json
 	jq --slurp --from-file $^ > "$@"
 
+includes/pre.all: templates/pre.all.jq metainfo.json package.json
+	jq --slurp --from-file $^ --raw-output > "$@"
+
 .PHONY: build/suncalc_haxe
 build/suncalc_haxe: src/suncalc/SunCalc.hx includes/pre.all README.md haxelib.json
 	mkdir --parents "$@/suncalc"
