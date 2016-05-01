@@ -1,3 +1,4 @@
+## Variables {{{
 LIBS         ?= -lib datetime -lib version
 HMAIN        ?= suncalc.SunCalc
 HFLAGS       ?= -cp src
@@ -11,22 +12,30 @@ TARGET_SUPPORT_LIBS ?= hxcpp hxjava hxnodejs
 DEV_LIBS ?= dox
 
 MAKE_OPTIONS ?= --no-print-directory
-
+## }}}
 
 .PHONY: default
 default: docs
 
-README.md: metainfo.json $(TEMPLATE_SRC) build/doc.xml scripts/template
-	scripts/template -i "$<" -t templates/README.md.j2 -d build/doc.xml > "$@"
-
 .PHONY: check
 check: test check-diff
 
-## Fix branches of submodules after cloning.
-.PHONY: fix-sub-branches
-fix-sub-branches:
-	cd docs && git checkout gh-pages
+## Test and build for all supported targets.
+.PHONY: all
+all: test build dist
 
+## make common targets {{{
+
+.PHONY: .FORCE
+.FORCE:
+
+.PHONY: clean
+clean:
+	rm -rf build
+
+## }}}
+
+## development setup {{{
 .PHONY: dependencies-get
 dependencies-get: haxe-dependencies-get haxe-dependencies-target-get node-dependencies-get
 
@@ -44,12 +53,31 @@ haxe-dependencies-target-get: Makefile
 
 link-hooks: .git/hooks/pre-commit
 
-haxelib.json: metainfo.json scripts/print_haxelib_json_file
-	./scripts/print_haxelib_json_file "$<" > "$@"
+.git/hooks/%: scripts/%-hook
+	ln --symbolic --force "../../$<" "$@"
+## }}}
 
-## Test and build for all supported targets.
-.PHONY: all
-all: test build dist
+## development work {{{
+
+## Fix branches of submodules after cloning.
+.PHONY: fix-sub-branches
+fix-sub-branches:
+	cd docs && git checkout gh-pages
+
+## All files should be properly rebuild, nothing should be changed.
+.PHONY: check-diff
+check-diff:
+	git submodule foreach "find . -type f -not -iregex '\(.*suncalc.*\|\./\.git.*\)' -print0 | xargs -0 git diff --exit-code"
+	git diff --exit-code --ignore-submodules=dirty
+
+.PHONY: push
+push: check-diff
+	git submodule foreach git push
+	git push
+
+## }}}
+
+## build {{{
 
 ## Build for all supported targets.
 .PHONY: build
@@ -62,14 +90,15 @@ build: js \
 		swf \
 		as3
 
-.PHONY: clean
-clean:
-	rm -rf build
+## }}}
 
 
 ## haxe {{{
 .PHONY: haxe
 haxe: build/suncalc_js/suncalc.js
+
+haxelib.json: templates/haxelib.json.jq metainfo.json package.json
+	jq --slurp --from-file $^ > "$@"
 
 .PHONY: build/suncalc_haxe
 build/suncalc_haxe: src/suncalc/SunCalc.hx includes/pre.all README.md haxelib.json
@@ -136,8 +165,8 @@ ports/suncalc-php: $(SRC) includes/pre.all .FORCE
 	@mv "$@/lib/suncalc/SunCalc.class.php.tmp" "$@/lib/suncalc/SunCalc.class.php"
 	cp CONTRIBUTING.md LICENSE.md "$@"
 
-ports/suncalc-php/composer.json: metainfo.json scripts/print_composer_json_file
-	./scripts/print_composer_json_file "$<" > "$@"
+ports/suncalc-php/composer.json: templates/composer.json.jq metainfo.json package.json
+	jq --slurp --from-file $^ > "$@"
 
 ports/suncalc-php/README.md: metainfo.json $(TEMPLATE_SRC) build/doc.xml scripts/template
 	scripts/template -i "$<" -t templates/ports_README.md.j2 -d build/doc.xml --key-value target=php > "$@"
@@ -210,6 +239,8 @@ build/suncalc_cs: $(SRC) includes/pre.all
 	haxe $(HFLAGS_BUILD) -cs "$@"
 ## }}}
 
+
+## docs {{{
 build/doc.xml: $(SRC)
 	haxe $(HMAIN) $(HFLAGS) $(LIBS) -xml "$@"
 
@@ -219,6 +250,11 @@ docs: build/doc.xml includes/css_post.css README.md
 	cat includes/css_post.css >> "$@/styles.css"
 	cd "$@" && git commit --all -m 'Auto commit without commit message.' && git push || :
 
+README.md: metainfo.json $(TEMPLATE_SRC) build/doc.xml scripts/template
+	scripts/template -i "$<" -t templates/README.md.j2 -d build/doc.xml > "$@"
+## }}}
+
+## test {{{
 .PHONY: test
 test: docs
 	@echo
@@ -239,27 +275,13 @@ test: docs
 	@echo
 	@echo -------- Testing Neko target.
 	@$(MAKE) $(MAKE_OPTIONS) --always-make build/test_suncalc.n
+## }}}
 
+## dist {{{
 .PHONY: dist
 dist: php-dist
 
 .PHONY: dist-push
 dist-push: dist
 	git submodule foreach '[ "$$(dirname $$name)" = "build" ] && git commit --all -m "Auto commit without commit message." && git push || :'
-
-## All files should be properly rebuild, nothing should be changed.
-.PHONY: check-diff
-check-diff:
-	git submodule foreach "find . -type f -not -iregex '\(.*suncalc.*\|\./\.git.*\)' -print0 | xargs -0 git diff --exit-code"
-	git diff --exit-code --ignore-submodules=dirty
-
-.PHONY: push
-push: check-diff
-	git submodule foreach git push
-	git push
-
-.PHONY: .FORCE
-.FORCE:
-
-.git/hooks/%: scripts/%-hook
-	ln --symbolic --force "../../$<" "$@"
+## }}}

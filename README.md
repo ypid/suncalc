@@ -14,7 +14,7 @@ The SunCalc module allows to calculate sun position,
 sunlight phases (times for sunrise, sunset, dusk, etc.),
 moon position and lunar phase for the given location and time.
 
-The library was ported to Haxe by [Robin `ypid` Schneider](https://github.com/ypid) to allow using it in a library for [opening hours](https://github.com/opening-hours/opening_hours.js/issues/136).
+SunCalc was ported to [Haxe](https://en.wikipedia.org/wiki/Haxe) by [Robin `ypid` Schneider](https://github.com/ypid) to allow using it in a [planed rewrite of the opening hours library](https://github.com/opening-hours/opening_hours.js/issues/136).
 
 It is based on the [JavaScript implementation](https://github.com/mourner/suncalc)
 created by [Vladimir Agafonkin](http://agafonkin.com/en) ([@mourner](https://github.com/mourner))

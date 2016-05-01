@@ -3,12 +3,16 @@
   "url": "https://github.com/ypid/suncalc",
   "license": "BSD",
   "tags": [
-    "sun",
-    "moon",
     "astronomy",
-    "date",
-    "time",
-    "cross"
+    "calculation",
+    "cross",
+    "illumination",
+    "math",
+    "moon",
+    "sun",
+    "sunrise",
+    "sunset",
+    "twilight"
   ],
   "description": "Calculate sun position, sunlight phases, moon position and lunar phase.",
   "version": "1.7.0",
