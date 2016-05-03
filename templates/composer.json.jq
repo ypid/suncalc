@@ -8,9 +8,10 @@
     support: .[0].support,
     license: .[0].license.name.spdx_identifier,
     authors: ([ .[0].authors | sort_by(.name) | .[] | select(contains({ targets: [ "php" ]}) or contains({ targets: [ "role::upstream" ]})) ] ),
+    # FIXME
     # "autoload": {
-    #     "psr-0" : {
-    #         "SunCalc" : "lib"
+    #     "psr-4" : {
+    #         "suncalc_SunCalc\\" : "lib"
     #     }
     # }
 }

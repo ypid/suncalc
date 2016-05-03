@@ -112,7 +112,7 @@
             "nick": "ypid",
             "email": "ypid@riseup.net",
             "homepage": "http://ypid.de/",
-            "role": "Maintainer/Rewrite in Haxe",
+            "role": "Maintainer, Rewrite in Haxe",
             "targets": [ "haxe", "php" ]
         },
         {

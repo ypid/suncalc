@@ -3,8 +3,52 @@
 {% set target_env_name  = meta.target_info[kv.target].target_env_name %}
 
 {% block content %}
+
+{% if kv.target == 'php' %}
+## Getting started
+
+Check out the following example to get started.
+
+```php
+## Needed when executed in the root of this repository.
+require_once __DIR__ . '/lib/php/Boot.class.php';
+
+## Needed when installed via composer. FIXME
+# require_once __DIR__ . '/vendor/ypid/suncalc/lib/php/Boot.class.php';
+
+echo suncalc_SunCalc::getMoonIllumination(new Date(2000, 1, 1, 0, 0, 0));
+```
+
+## TODO
+
+Maintainer/tester with PHP knowledge wanted :wink:
+
+Composer does provide a [autoload feature](https://getcomposer.org/doc/04-schema.md#autoload) which is currently not used.
+My experience with PHP is very limited which is the reason I wrote in Haxe and
+generated this PHP target only because all unit tests for PHP passed. If you
+know how to properly support the autoload feature for this library, I will be
+happy to integrate it.
+
+{% endif %}
+
 ## Internals
 This library was automatically build using [Haxe](http://haxe.org/) to target {{ target_env_name }}.
 
 Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [this repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ target_env_name }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
+
+## Unit testing
+
+Unit testing is done [against the source repository]({{ meta.url }}) in Haxe,
+as well as against each transcompile target ({{ target_env_name }} in this
+case). You can check them out in the [source repository]({{ meta.url }}).
+
+## Maintainers
+
+{% for author in meta.authors %}
+{%   if (target_env_name|lower) in author.targets %}
+* [{{ author.name }}]({{ author.homepage }}), role: {{ author.role }}
+{%   endif %}
+{% endfor %}
+
+
 {% endblock %}
