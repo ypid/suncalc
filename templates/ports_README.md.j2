@@ -34,7 +34,7 @@ happy to integrate it.
 ## Internals
 This library was automatically build using [Haxe](http://haxe.org/) to target {{ target_env_name }}.
 
-Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [this repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ target_env_name }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
+Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [the {{ target_env_name }} target repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ target_env_name }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
 
 ## Unit testing
 
@@ -42,7 +42,7 @@ Unit testing is done [against the source repository]({{ meta.url }}) in Haxe,
 as well as against each transcompile target ({{ target_env_name }} in this
 case). You can check them out in the [source repository]({{ meta.url }}).
 
-## Maintainers
+## Maintainer
 
 {% for author in meta.authors %}
 {%   if (target_env_name|lower) in author.targets %}
