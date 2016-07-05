@@ -1,6 +1,35 @@
 {% extends 'templates/base.md.j2' %}
-{% set package_platform = meta.target_info[kv.target].package_platform %}
-{% set target_env_name  = meta.target_info[kv.target].target_env_name %}
+{% set target_info = meta.target_info[kv.target] %}
+
+{% block vcs_badges %}
+{% if "repo_url" in target_info %}
+
+{% set github_repo_path = target_info.repo_url | replace("https://github.com/", "") %}
+[![GitHub stars](https://img.shields.io/github/stars/{{ github_repo_path }}.svg?style=social&label=Star&maxAge=2592000)]({{ target_info.repo_url }}/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/{{ github_repo_path }}.svg?style=social&label=Fork&maxAge=2592000)]({{ target_info.repo_url }}/network)
+[![GitHub watchers](https://img.shields.io/github/watchers/{{ github_repo_path }}.svg?style=social&label=Watch&maxAge=2592000)]({{ target_info.repo_url }}/watchers)
+[![GitHub open issues](https://img.shields.io/github/issues-raw/{{ github_repo_path }}.svg?&maxAge=2592000)]({{ target_info.repo_url }}/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/{{ github_repo_path }}.svg?maxAge=2592000)]({{ target_info.repo_url }}/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub open pull requests](https://img.shields.io/github/issues-pr-raw/{{ github_repo_path }}.svg?&maxAge=2592000)]({{ target_info.repo_url }}/pulls)
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/{{ github_repo_path }}.svg?&maxAge=2592000)]({{ target_info.repo_url }}/pulls?q=is%3Apr+is%3Aclosed)
+{% endif %}
+{% endblock %}
+
+{% block additional_badges %}
+{% if "additional_badges" in meta.target_info[kv.target] %}
+{%   for item in meta.target_info[kv.target].additional_badges %}
+{%     if item|length == 3 %}
+{%       set badge_alt_tag = item[0] %}
+{%       set badge_img_url = item[1] %}
+{%       set badge_href_url = item[2] | replace("$package_url", meta.target_info[kv.target].package_url) %}
+[![{{ badge_alt_tag }}]({{ badge_img_url }})]({{ badge_href_url }})
+{%     else %}
+{# Empty line to end paragraph. #}
+
+{%     endif %}
+{%   endfor %}
+{% endif %}
+{% endblock %}
 
 {% block content %}
 
@@ -32,20 +61,20 @@ happy to integrate it.
 {% endif %}
 
 ## Internals
-This library was automatically build using [Haxe](http://haxe.org/) to target {{ target_env_name }}.
+This library was automatically build using [Haxe](http://haxe.org/) to target {{ target_info.target_env_name }}.
 
-Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [the {{ target_env_name }} target repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ target_env_name }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
+Refer to {{ meta.url }} when you want to contribute. Note that you should only report issues against [the {{ target_info.target_env_name }} target repository]({{ meta.target_info[kv.target].repo_url }}) when you think the issue only occurs in the {{ target_info.target_env_name }} port of this library. If you are unsure, report [against the source repository]({{ meta.url }}) instead.
 
 ## Unit testing
 
 Unit testing is done [against the source repository]({{ meta.url }}) in Haxe,
-as well as against each transcompile target ({{ target_env_name }} in this
+as well as against each transcompile target ({{ target_info.target_env_name }} in this
 case). You can check them out in the [source repository]({{ meta.url }}).
 
 ## Maintainer
 
 {% for author in meta.authors %}
-{%   if (target_env_name|lower) in author.targets %}
+{%   if (target_info.target_env_name|lower) in author.targets %}
 * [{{ author.name }}]({{ author.homepage }}), role: {{ author.role }}
 {%   endif %}
 {% endfor %}

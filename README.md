@@ -9,6 +9,14 @@
 [![NPM version](https://img.shields.io/npm/v/suncalc.svg)](https://www.npmjs.org/package/suncalc)
 [![Packagist version](https://img.shields.io/packagist/v/ypid/suncalc.svg)](https://packagist.org/packages/ypid/suncalc)
 
+[![GitHub stars](https://img.shields.io/github/stars/ypid/suncalc.svg?style=social&label=Star&maxAge=2592000)](https://github.com/ypid/suncalc/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/ypid/suncalc.svg?style=social&label=Fork&maxAge=2592000)](https://github.com/ypid/suncalc/network)
+[![GitHub watchers](https://img.shields.io/github/watchers/ypid/suncalc.svg?style=social&label=Watch&maxAge=2592000)](https://github.com/ypid/suncalc/watchers)
+[![GitHub open issues](https://img.shields.io/github/issues-raw/ypid/suncalc.svg?&maxAge=2592000)](https://github.com/ypid/suncalc/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/ypid/suncalc.svg?maxAge=2592000)](https://github.com/ypid/suncalc/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub open pull requests](https://img.shields.io/github/issues-pr-raw/ypid/suncalc.svg?&maxAge=2592000)](https://github.com/ypid/suncalc/pulls)
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/ypid/suncalc.svg?&maxAge=2592000)](https://github.com/ypid/suncalc/pulls?q=is%3Apr+is%3Aclosed)
+
 
 The SunCalc module allows to calculate sun position,
 sunlight phases (times for sunrise, sunset, dusk, etc.),

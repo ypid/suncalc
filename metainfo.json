@@ -57,6 +57,14 @@
             "package_platform": "Packagist",
             "package_url": "https://packagist.org/packages/ypid/suncalc",
             "package_badge": "https://img.shields.io/packagist/v/ypid/suncalc.svg",
+            "additional_badges": [
+                [],
+                [ "PHPPackages Rank", "https://phppackages.org/p/ypid/suncalc/badge/rank.svg", "https://phppackages.org/p/ypid/suncalc" ],
+                [ "PHPPackages Referenced By", "https://phppackages.org/p/ypid/suncalc/badge/referenced-by.svg", "https://phppackages.org/p/ypid/suncalc" ],
+                [ "Packagist monthly downloads", "https://img.shields.io/packagist/dm/ypid/suncalc.svg", "$package_url" ],
+                [ "Packagist daily downloads", "https://img.shields.io/packagist/dd/ypid/suncalc.svg", "$package_url" ],
+                [ "Packagist total downloads", "https://img.shields.io/packagist/dt/ypid/suncalc.svg", "$package_url" ]
+            ],
             "install_cmd": "composer require ypid/suncalc",
             "repo_url": "https://github.com/ypid/suncalc-php",
             "type": "target"

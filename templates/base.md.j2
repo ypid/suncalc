@@ -33,6 +33,23 @@
 {%   endif %}
 {% endfor %}
 {% endblock %}
+{% block vcs_badges %}
+{% if "https://github.com" in meta.url %}
+
+{% set github_repo_path = meta.url | replace("https://github.com/", "") %}
+[![GitHub stars](https://img.shields.io/github/stars/{{ github_repo_path }}.svg?style=social&label=Star&maxAge=2592000)]({{ meta.url }}/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/{{ github_repo_path }}.svg?style=social&label=Fork&maxAge=2592000)]({{ meta.url }}/network)
+[![GitHub watchers](https://img.shields.io/github/watchers/{{ github_repo_path }}.svg?style=social&label=Watch&maxAge=2592000)]({{ meta.url }}/watchers)
+[![GitHub open issues](https://img.shields.io/github/issues-raw/{{ github_repo_path }}.svg?&maxAge=2592000)]({{ meta.url }}/issues)
+[![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/{{ github_repo_path }}.svg?maxAge=2592000)]({{ meta.url }}/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub open pull requests](https://img.shields.io/github/issues-pr-raw/{{ github_repo_path }}.svg?&maxAge=2592000)]({{ meta.url }}/pulls)
+[![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed-raw/{{ github_repo_path }}.svg?&maxAge=2592000)]({{ meta.url }}/pulls?q=is%3Apr+is%3Aclosed)
+{% endif %}
+{% endblock %}
+{% block additional_badges %}
+{% endblock %}
+{% block post_badges %}
+{% endblock %}
 
 {% block pre_haxe_doc %}{% endblock %}
 
