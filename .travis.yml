@@ -40,4 +40,8 @@ install:
 
 script:
   - make all
-  - make check-diff
+
+  ## All files should be properly rebuild, nothing should be changed.
+  ## Assumes that software versions are the same which is difficult.
+  ## Also assumes reproducible builds which seems to be the case.
+  # - make check-diff
