@@ -31,7 +31,7 @@
             "target_env_name": "Haxe",
             "target_env_url": "https://en.wikipedia.org/wiki/Haxe",
             "package_platform": "haxelib",
-            "package_url": "http://lib.haxe.org/p/suncalc",
+            "package_url": "https://lib.haxe.org/p/suncalc",
             "package_badge": "https://img.shields.io/badge/Haxe-VERSION-blue.svg",
             "type": "native port",
             "source_file": "https://github.com/ypid/suncalc/blob/master/src/suncalc/SunCalc.hx"
